@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "esnext",
+    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"],
+    "allowArbitraryExtensions": true,
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Type-safety. `strict` is on because half the value of a TypeScript
+       study project is seeing what strict mode actually forces you to do. */
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Deliberately OFF. Teaching examples routinely declare a variable purely
+       to point at it in a comment ("note that `x` is a NEW object every
+       render"). With these on, half the demos would fail to compile for
+       reasons that have nothing to do with the concept being taught. */
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+
+    /* Deliberately OFF. `erasableSyntaxOnly` bans TS syntax that emits real
+       JS (enums, constructor parameter properties). The legacy-class topics
+       need parameter properties to show what pre-hooks React looked like. */
+    "erasableSyntaxOnly": false
+  },
+  "include": ["src"]
+}
