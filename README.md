@@ -4,11 +4,53 @@ An interactive study project for a **React interview at around five years of exp
 60 topics, ~300 interview questions with model answers, and a live demo for every one — all
 in heavily commented TypeScript you can read as the actual lesson.
 
+---
+
+## Getting started
+
+### Prerequisites
+
+- **Node.js 20.19+ or 22.12+** — required by Vite 8. Check with `node -v`.
+  If you use [nvm](https://github.com/nvm-sh/nvm): `nvm install 22 && nvm use 22`.
+- **npm** — ships with Node. No other global tools are needed.
+- **Git** — to clone the repository.
+
+### Setup
+
 ```bash
-npm install     # already done if you are reading this in the folder that was built for you
-npm run dev     # open the URL it prints
-npm test        # 145 tests, all passing (22 hand-written + a 60-topic smoke suite)
+git clone https://github.com/piyushrewatkar/react-interview-prep.git
+cd react-interview-prep
+npm ci          # installs the exact versions pinned in package-lock.json
+npm run dev     # starts the dev server — open the URL it prints (default http://localhost:5173)
 ```
+
+Use `npm ci` rather than `npm install` for a first setup: it installs exactly what the lock
+file records, so you get the same dependency tree this project was tested with.
+
+No `.env` file or API keys are needed — every demo runs entirely in the browser.
+
+### Verify it works
+
+```bash
+npm test          # 145 tests, all passing (22 hand-written + a 60-topic smoke suite)
+npm run typecheck # strict TypeScript, should report no errors
+```
+
+### Production build
+
+```bash
+npm run build     # type-checks, then writes the bundle to dist/
+npm run preview   # serves dist/ locally to check the build
+```
+
+### Troubleshooting
+
+- **`npm ci` or `npm run dev` fails with an engine or syntax error** — your Node version is
+  too old. Upgrade to one of the versions above.
+- **Port 5173 is already in use** — Vite picks the next free port automatically; use the URL
+  it prints. To choose one yourself: `npm run dev -- --port 3000`.
+- **Something is badly broken after pulling changes** — reinstall cleanly:
+  `rm -rf node_modules && npm ci`.
 
 ---
 
@@ -115,6 +157,7 @@ registration step. The numeric filename prefix sets the order and is stripped fr
 | `npm run test:watch` | Vitest in watch mode |
 | `npm run typecheck` | `tsc -b --noEmit`, strict mode |
 | `npm run build` | Type-check then production build |
+| `npm run preview` | Serve the production build from `dist/` locally |
 | `npm run lint` | oxlint |
 
 ---
